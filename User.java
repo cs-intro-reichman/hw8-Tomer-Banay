@@ -55,7 +55,7 @@
     public boolean addFollowee(String name) {
 
         //check if already follows
-        for (int i = 0; i < maxfCount; i++){
+        for (int i = 0; i < fCount; i++){
             if (follows[i] != null && follows[i].equalsIgnoreCase(name)) {
                 return false;
             }
