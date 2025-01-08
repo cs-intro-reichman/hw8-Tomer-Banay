@@ -43,6 +43,7 @@ public class Network {
     *  Otherwise, creates a new user with the given name, adds the user to this network, and returns true. */
     public boolean addUser(String name) {
         
+        
         //check if already follows
         for (int i = 0; i < userCount; i++){
             if (users[i] != null && users[i].equals(name)) {
@@ -69,6 +70,10 @@ public class Network {
     // checks if users exist
     User user1 = getUser(name1);
     User user2 = getUser(name2);
+
+    if (name1.equalsIgnoreCase(name2)) {
+        return false; // Prevent self-follow
+    }
 
     if (user1 == null || user2 == null) {
         return false;  // One or both users do not exist
