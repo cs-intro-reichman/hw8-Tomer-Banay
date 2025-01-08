@@ -20,12 +20,10 @@
      *  to allow testing the toString and follows methods, before implementing other methods. */
     public User(String name, boolean gettingStarted) {
         this(name);
-        if (gettingStarted) {
         follows[0] = "Foo";
         follows[1] = "Bar";
         follows[2] = "Baz";
         fCount = 3;
-        }
     }
 
     /** Returns the name of this user. */
@@ -56,14 +54,21 @@
      *  If this user already follows the given name, or if the follows list is full, does nothing and returns false; */
     public boolean addFollowee(String name) {
 
-        if (fCount == maxfCount || this.follows(name)) return false;
+         // Check if the user already follows the given name
+        if (this.follows(name)) {
+        return false; // Return false if already following
+        }
 
-        else {
+        // Check if the follows list is full
+        if (fCount == maxfCount) {
+        return false; // Return false if the list is full
+    }
+
+     // Add the followee to the list
         follows[fCount] = name;
         fCount++;
-        return true;
-        }
-    }
+        return true; // Successfully added
+}
 
     /** Removes the given name from the follows list of this user. If successful, returns true.
      *  If the name is not in the list, does nothing and returns false. */
