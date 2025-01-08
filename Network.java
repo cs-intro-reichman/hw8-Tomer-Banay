@@ -71,12 +71,12 @@ public class Network {
     User user1 = getUser(name1);
     User user2 = getUser(name2);
 
-    if (name1.equalsIgnoreCase(name2)) {
-        return false; // Prevent self-follow
-    }
-
     if (user1 == null || user2 == null) {
         return false;  // One or both users do not exist
+    }
+
+    if (user1.getName().equalsIgnoreCase(name2)) {
+        return false; // Prevent self-follow
     }
 
     // add followee
